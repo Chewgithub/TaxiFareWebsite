@@ -1,7 +1,8 @@
 import streamlit as st
 import datetime
 import requests
-
+import pandas as pd
+import numpy as np
 '''
 # New York City Taxi Fare Prediction
 '''
@@ -80,6 +81,13 @@ params=dict(
   dropoff_latitude=dropoff_latitude,
   passenger_count=option
 )
+df = pd.DataFrame(
+     [[pickup_latitude,pickup_longtitude],[dropoff_latitude,dropoff_longtitude]],
+     columns=['lat', 'lon'])
+
+st.map(df)
+
+
 a=st.button('pred')
 if a==False:
     st.stop()
