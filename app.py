@@ -1,4 +1,4 @@
-# import config
+import config
 import streamlit as st
 import datetime
 import requests
@@ -13,9 +13,10 @@ from ipywidgets import embed
 import streamlit.components.v1 as components
 import googlemaps
 
+# if you wish to run locally on your machine, please replace api_key to your personal api key
 
-gmaps.configure(api_key='AIzaSyCNd5qfyfE6Wn79ikK0qPArDzwKnJFRPFY')
-maps_api = googlemaps.Client(key='AIzaSyCNd5qfyfE6Wn79ikK0qPArDzwKnJFRPFY')
+gmaps.configure(config.api_key)
+maps_api = googlemaps.Client(config.api_key)
 
 
 st.markdown('''
