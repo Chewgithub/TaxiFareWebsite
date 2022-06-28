@@ -152,7 +152,7 @@ try:
             st.stop()
 
     #call our API using the `requests` package...
-    st.balloons
+    st.balloons()
     res=requests.get(url, params=params)
     data=res.json()
 
