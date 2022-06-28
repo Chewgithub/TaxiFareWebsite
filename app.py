@@ -89,9 +89,40 @@ with col2:
 
 option = st.slider('How many passenger(s) do you have?', 1, 10, 3)
 st.write('The passenger count is ', option)
+#Labelling coordinates on google map
+c=((pickup_latitude+dropoff_latitude)/2, (pickup_longitude+dropoff_longitude)/2)
+
+fig = gmaps.figure(center=c,zoom_level=10)
+
+
+#locations for both pick-up and drop-off
+locations = [
+        (pickup_latitude, pickup_longitude),]
+locations2=[(dropoff_latitude, dropoff_longitude)]
+
+
+#labelling for both pick-up and drop-off on map
+pickup_label = ['Pickup here!']
+symbols = gmaps.symbol_layer(
+        locations, fill_color='red', stroke_color='red',info_box_content=pickup_label)
+fig.add_layer(symbols)
+
+
+dropoff_label = ['Dropoff here!']
+symbols2 = gmaps.symbol_layer(
+        locations2, fill_color='blue', stroke_color='blue',info_box_content=dropoff_label)
+fig.add_layer(symbols2)
+
+
+#snippet for streamlit frontend
+snippet = embed.embed_snippet(views=fig)
+html = embed.html_template.format(title="googlemap", snippet=snippet)
+components.html(html, height=400,width=700)
+
 
 
 url = 'https://taxifare.lewagon.ai/predict'
+
 
 
 
@@ -111,35 +142,6 @@ try:
      [[pickup_latitude,pickup_longitude],[dropoff_latitude,dropoff_longitude]],
      columns=['lat', 'lon'])
 
-    #Labelling coordinates on google map
-    c=((pickup_latitude+dropoff_latitude)/2, (pickup_longitude+dropoff_longitude)/2)
-
-    fig = gmaps.figure(center=c,zoom_level=10)
-
-
-    #locations for both pick-up and drop-off
-    locations = [
-            (pickup_latitude, pickup_longitude),]
-    locations2=[(dropoff_latitude, dropoff_longitude)]
-
-
-    #labelling for both pick-up and drop-off on map
-    pickup_label = ['Pickup here!']
-    symbols = gmaps.symbol_layer(
-            locations, fill_color='red', stroke_color='red',info_box_content=pickup_label)
-    fig.add_layer(symbols)
-
-
-    dropoff_label = ['Dropoff here!']
-    symbols2 = gmaps.symbol_layer(
-            locations2, fill_color='blue', stroke_color='blue',info_box_content=dropoff_label)
-    fig.add_layer(symbols2)
-
-
-    #snippet for streamlit frontend
-    snippet = embed.embed_snippet(views=fig)
-    html = embed.html_template.format(title="googlemap", snippet=snippet)
-    components.html(html, height=400,width=700)
 
     #prediction button
     col1, col2, col3 = st.columns(3)
