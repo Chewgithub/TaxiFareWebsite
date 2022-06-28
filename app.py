@@ -116,7 +116,7 @@ try:
 
 
     #snippet for streamlit frontend
-    snippet = embed.embed_snippet(viewsj=fig)
+    snippet = embed.embed_snippet(views=fig)
     html = embed.html_template.format(title="googlemap", snippet=snippet)
     components.html(html, height=400,width=700)
     n=1
