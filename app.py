@@ -116,11 +116,21 @@ try:
 
 
     #snippet for streamlit frontend
-    snippet = embed.embed_snippet(views=fig)
+    snippet = embed.embed_snippet(viewsj=fig)
     html = embed.html_template.format(title="googlemap", snippet=snippet)
     components.html(html, height=400,width=700)
+    n=1
 except:
-    pass
+    n=0
+
+if n==0:
+    try:
+        maps_df = pd.DataFrame(
+        [[pickup_latitude,pickup_longitude],[dropoff_latitude,dropoff_longitude]],
+        columns=['lat', 'lon'])
+        st.map(maps_df)
+    except:
+        pass
 
 url = 'https://taxifare.lewagon.ai/predict'
 
