@@ -1,4 +1,4 @@
-import config
+# import config
 import streamlit as st
 import datetime
 import requests
@@ -14,8 +14,8 @@ import streamlit.components.v1 as components
 import googlemaps
 
 
-gmaps.configure(api_key=config.api_key)
-maps_api = googlemaps.Client(key=config.api_key)
+gmaps.configure(api_key='AIzaSyCNd5qfyfE6Wn79ikK0qPArDzwKnJFRPFY')
+maps_api = googlemaps.Client(key='AIzaSyCNd5qfyfE6Wn79ikK0qPArDzwKnJFRPFY')
 
 
 st.markdown('''
