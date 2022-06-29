@@ -1,4 +1,4 @@
-# import config
+import config
 import streamlit as st
 import datetime
 import requests
@@ -15,8 +15,8 @@ import googlemaps
 
 # if you wish to run locally on your machine, please replace api_key to your personal api key
 
-gmaps.configure('AIzaSyCNd5qfyfE6Wn79ikK0qPArDzwKnJFRPFY')
-maps_api = googlemaps.Client('AIzaSyCNd5qfyfE6Wn79ikK0qPArDzwKnJFRPFY')
+gmaps.configure(config.api_key)
+maps_api = googlemaps.Client(config.api_key)
 
 
 st.markdown('''
