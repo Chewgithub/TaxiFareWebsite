@@ -133,7 +133,7 @@ if n==0:
     except:
         pass
 
-url = 'https://taxifare.lewagon.ai/predict'
+url = 'https://taxifaremodelapi-gf34ldcmyq-de.a.run.app/predict'
 
 
 
